@@ -3,10 +3,10 @@ import React, { createContext, useContext, useReducer } from 'react';
 const AppContext = createContext();
 
 const initialState = {
+    query: '',
     videos: [],
     loading: false,
-    error: null,
-    query: '',
+    selectedLanguage: 'all',
 };
 
 const appReducer = (state, action) => {
@@ -21,6 +21,11 @@ const appReducer = (state, action) => {
             return { ...state, query: action.payload };
         case 'CLEAR_RESULTS':
             return { ...state, videos: [], error: null };
+        case 'SET_LANGUAGE':
+            return {
+                ...state,
+                selectedLanguage: action.payload
+            };
         default:
             return state;
     }

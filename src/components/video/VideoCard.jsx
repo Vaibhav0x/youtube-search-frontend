@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { Play, Calendar, User } from 'lucide-react';
 import VideoStats from './VideoStats';
 import Button from '../common/Button';
-import { formatDate } from '../../utils/formatters';
+import { formatDate,formatDuration } from '../../utils/formatters';
 import { ANIMATION_VARIANTS } from '../../utils/constants';
+
 
 const VideoCard = ({ video, index }) => {
     const handleWatchVideo = () => {
@@ -36,6 +37,10 @@ const VideoCard = ({ video, index }) => {
                     alt={video.snippet.title}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
+                {/* Add duration badge */}
+                <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-white text-sm font-medium">
+                    {formatDuration(video.contentDetails?.duration)}
+                </div>
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
