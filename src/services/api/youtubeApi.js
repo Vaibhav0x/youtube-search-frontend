@@ -17,7 +17,6 @@ export const searchVideos = async (query, videoLanguage = 'all') => {
                     ''
                 ).toLowerCase();
 
-                console.log(`Filtering videos for language: ${videoLanguage}`);
                 // Handle variations of language codes
                 switch (videoLanguage) {
                     case 'hi':
@@ -30,12 +29,6 @@ export const searchVideos = async (query, videoLanguage = 'all') => {
                     default:
                         return videoLang.startsWith(videoLanguage);
                 }
-            });
-
-            // Debug logging
-            console.log(`Found ${filteredVideos.length} videos in ${videoLanguage}`);
-            filteredVideos.forEach(video => {
-                console.log(`Filtered Video: ${video.snippet.title}`);
             });
 
             return {
